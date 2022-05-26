@@ -6,9 +6,13 @@ import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebElement;
-import ulilities.TestBase;
+import Utilities.TestBase;
 
-public class C01 extends TestBase {
+import java.util.ArrayList;
+
+import java.util.List;
+
+public class AmazonTest extends TestBase {
       /*
           Notes: It may also be necessary to write code to accept the accept cookies warning.
           1. Go to 'https://www.amazon.com.tr/'
@@ -34,22 +38,40 @@ public class C01 extends TestBase {
         Assert.assertTrue(sonucYazisi.isDisplayed());
 
         WebElement urun=driver.findElement(By.xpath("//span[@class='a-color-state a-text-bold']"));
-        System.out.println(urun.getText());
+        String urunn=urun.getText();
 
         // Click iPhone13 at the top of the list
-        driver.findElement(By.xpath("(//img[@class='s-image'])[2]")).click();
+        driver.findElement(By.xpath("(//img[@class='s-image'])[1]")).click();
 
 
         // Log the following values for each size
 
-        WebElement size=driver.findElement(By.xpath("(//span[@class='a-size-base a-color-base inline-twister-dim-title-value a-text-bold'])[2]"));
-        System.out.println("Size :"+size.getText());
-        WebElement renk=driver.findElement(By.xpath("(//span[@class='a-size-base a-color-base inline-twister-dim-title-value a-text-bold'])[1]"));
-        System.out.println("Color :"+renk.getText());
+        WebElement size=driver.findElement(By.xpath("(//span[@class='selection'])[1]"));
+        String sizee=size.getText();
+
+        WebElement renk=driver.findElement(By.xpath("(//span[@class='selection'])[2]"));
+        String renkk=renk.getText();
+
         WebElement urunFiyati=driver.findElement(By.xpath("(//span[@class='a-price-whole'])[6]"));
-        System.out.println("Price :"+urunFiyati.getText());
+        String urunFiyatii=urunFiyati.getText();
+
         WebElement stokDurumu=driver.findElement(By.xpath("(//div[@class='celwidget'])[38]"));
-        System.out.println("Stock :"+stokDurumu.getText());
+        String stokk=stokDurumu.getText();
+
+        List<String>ozellikler=new ArrayList<>();
+        ozellikler.add(urunn);
+        ozellikler.add(sizee);
+        ozellikler.add(renkk);
+        ozellikler.add(urunFiyatii);
+        ozellikler.add(stokk);
+
+
+        for (int i = 0; i <ozellikler.size() ; i++) {
+        }
+            System.out.println(ozellikler.get(0) +" "+"Size :"+ ozellikler.get(1));
+            System.out.println("Color :"+ ozellikler.get(2)+"  "+"Price :"+  ozellikler.get(3)+"TL");
+            System.out.println("Stock :" +ozellikler.get(4));
+
 
 
     }
